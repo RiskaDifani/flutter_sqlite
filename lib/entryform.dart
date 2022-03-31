@@ -3,7 +3,9 @@ import 'Item.dart';
 
 class EntryForm extends StatefulWidget {
   final Item? item;
+
   EntryForm(this.item);
+  
   @override
   EntryFormState createState() => EntryFormState(item);
 }

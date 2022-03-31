@@ -1,15 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_sqlite/db/dbhelper.dart';
+import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
+
 import 'Item.dart';
 import 'entryform.dart';
-import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  // Home({ Key? key }) : super(key: key);
-
   @override
-HomeState createState() => HomeState();
+  HomeState createState() => HomeState();
 }
 
 class HomeState extends State<Home> {
@@ -20,11 +18,11 @@ class HomeState extends State<Home> {
   Widget build(BuildContext context) {
     updateListView();
 
-    if (itemList == null){
+    if (itemList == null) {
       itemList = <Item>[];
     }
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         title: Text('Daftar Item'),
       ),
       body: Column(children: [
@@ -53,13 +51,15 @@ class HomeState extends State<Home> {
       ]),
     );
   }
-   Future<Item?> navigateToEntryForm(BuildContext context, Item? item) async {
+
+  Future<Item?> navigateToEntryForm(BuildContext context, Item? item) async {
     var result = await Navigator.push(context,
         MaterialPageRoute(builder: (BuildContext context) {
       return EntryForm(item);
     }));
     return result;
   }
+
   ListView createListView() {
     TextStyle? textStyle = Theme.of(context).textTheme.headline5;
     return ListView.builder(

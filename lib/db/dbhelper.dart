@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import '../Item.dart';
+import 'dart:async';
 
 class DbHelper {
   static DbHelper? _dbHelper;
@@ -12,8 +13,10 @@ class DbHelper {
     //untuk menentukan nama database dan lokasi yg dibuat
     Directory directory = await getApplicationDocumentsDirectory();
     String path = directory.path + 'item.db';
+
     //create, read databases
     var itemDatabase = openDatabase(path, version: 4, onCreate: _createDb);
+    
     //mengembalikan nilai object sebagai hasil dari fungsinya
     return itemDatabase;
   }
